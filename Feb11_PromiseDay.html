@@ -1,0 +1,143 @@
+
+<html>
+<head>
+<title>Happy Promise Day 🤝</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  background: #e6fff2;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 40px;
+  overflow-x: hidden;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Fade-in text animation */
+@keyframes fadeText {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  color: #198c62;
+  font-size: 44px;
+  font-weight: 600;
+  opacity: 0;
+  animation: fadeText 1.4s forwards 0.4s;
+  text-shadow: 0 0 12px #198c62;
+}
+
+p {
+  font-size: 20px;
+  width: 80%;
+  margin: auto;
+  padding: 18px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 18px;
+  backdrop-filter: blur(6px);
+  line-height: 1.75;
+  color: #333;
+  opacity: 0;
+  animation: fadeText 1.6s forwards 1s;
+  border: 2px solid rgba(255,255,255,0.4);
+  box-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
+.icon {
+  font-size: 75px;
+  opacity: 0;
+  animation: fadeText 1.4s forwards 0.2s, float 3s infinite ease-in-out;
+  filter: drop-shadow(0 0 12px #198c62);
+}
+
+/* Floating glow hearts */
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-160px) scale(1.6); opacity: 0; }
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  font-size: 26px;
+  color: #198c62;
+  animation: floatUp 4s infinite ease-in-out;
+  filter: drop-shadow(0 0 8px #198c62);
+}
+
+.heart:nth-child(2) {
+  left: 20%;
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+
+.heart:nth-child(3) {
+  left: 70%;
+  animation-duration: 6s;
+  animation-delay: 0.5s;
+}
+
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  animation: sparkleAnim 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px #fff);
+}
+@keyframes sparkleAnim {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.3); }
+}
+
+.sparkle:nth-child(4) { top: 10%; left: 15%; animation-delay: 0.3s; }
+.sparkle:nth-child(5) { top: 35%; left: 80%; animation-delay: 0.8s; }
+.sparkle:nth-child(6) { top: 70%; left: 30%; animation-delay: 1.3s; }
+.sparkle:nth-child(7) { top: 50%; left: 60%; animation-delay: 1.8s; }
+
+.name {
+  margin-top: 25px;
+  font-size: 22px;
+  color: #198c62;
+  font-weight: 600;
+  opacity: 0;
+  animation: fadeText 1.4s forwards 1.6s;
+  text-shadow: 0 0 10px #198c62;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating glow hearts -->
+<div class="heart">❤️</div>
+<div class="heart">❤️</div>
+<div class="heart">❤️</div>
+
+<!-- Sparkles -->
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+
+<div class="icon">🤝</div>
+
+<h1>Happy Promise Day, Bugu ❤️</h1>
+
+<p>Here are my promises, Bugu: I’ll love you through every kilometre, stay loyal, stay true, and make each promise real when we are together.</p>
+
+<div class="name">– With all my love, Pugu</div>
+
+</body>
+</html>
