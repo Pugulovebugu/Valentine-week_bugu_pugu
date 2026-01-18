@@ -3,35 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pugu ❤️ Bugu – Valentine's Week</title>
+<title>Bugu ❤ Pugu | Valentine's Week</title>
 <style>
-body{
-  margin:0; padding:20px;
-  background:#fff0f6;
-  font-family:'Poppins',sans-serif;
-  max-width:480px; margin:auto;
-  text-align:center;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  overflow-x: hidden;
 }
-h1{ font-size:8vw; color:#d12f6b; }
-a.day{
-  display:block; background:white; padding:14px; margin:12px 0;
-  border-radius:12px; text-decoration:none; color:#d12f6b; font-size:5vw;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+
+/* LANDING */
+#landing {
+  height: 100vh;
+  background: linear-gradient(135deg,#ff8bb0,#ffcbe6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-shadow: 0 0 12px #ff7eb3;
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;} to {opacity:1;}
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  animation: slideUp 1.4s;
+}
+
+@keyframes slideUp {
+  0% {opacity:0; transform:translateY(30px);}
+  100% {opacity:1; transform:translateY(0);}
+}
+
+.enter-btn {
+  margin-top: 18px;
+  padding: 12px 28px;
+  background: #ffb4d2;
+  border: none;
+  border-radius: 14px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 12px #ff9ac2;
+}
+
+/* MAIN */
+#main {
+  display: none;
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg,#ff85a2,#ffcbe0);
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 42px;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+}
+
+.day-btn {
+  margin: 12px auto;
+  padding: 15px;
+  width: 90%;
+  max-width: 450px;
+  background: white;
+  border-radius: 14px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #d12c6a;
+  box-shadow: 0 0 10px #fff;
+  text-decoration: none;
+  display: block;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.day-btn.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* SURPRISE */
+#surprise {
+  display: none;
+  height: 100vh;
+  background: black;
+  color: hotpink;
+  font-size: 42px;
+  text-align: center;
+  padding-top: 130px;
+  animation: fadeIn 2s;
 }
 </style>
 </head>
 <body>
 
-<h1>Pugu ❤️ Bugu</h1>
-<p>Valentine's Week Special Website</p>
-<a class="day" href="Rose Day.html">🌹 Rose Day</a>
-<a class="day" href="Feb8_ProposeDay.html">💍 Propose Day</a>
-<a class="day" href="Feb9_ChocolateDay.html">🍫 Chocolate Day</a>
-<a class="day" href="Feb10_TeddyDay.html">🧸 Teddy Day</a>
-<a class="day" href="Feb11_PromiseDay.html">🤝 Promise Day</a>
-<a class="day" href="Feb12_HugDay.html">🤗 Hug Day</a>
-<a class="day" href="Feb13_KissDay.html">💋 Kiss Day</a>
-<a class="day" href="Feb14_ValentinesDay.html">❤️ Valentine's Day</a>
+<section id="landing">
+  <div class="title">Bugu ❤️ Pugu</div>
+  <button class="enter-btn" onclick="enterSite()">Enter</button>
+</section>
+
+<section id="main">
+  <h1>Valentine’s Week Letters</h1>
+
+  <a id="d7" class="day-btn" href="RoseDay.html">Feb 7 — Rose Day 🌹</a>
+  <a id="d8" class="day-btn" href="Feb8_ProposeDay.html">Feb 8 — Propose Day 💍</a>
+  <a id="d9" class="day-btn" href="Feb9_ChocolateDay.html">Feb 9 — Chocolate Day 🍫</a>
+  <a id="d10" class="day-btn" href="Feb10_TeddyDay.html">Feb 10 — Teddy Day 🧸</a>
+  <a id="d11" class="day-btn" href="Feb11_PromiseDay.html">Feb 11 — Promise Day 🤝</a>
+  <a id="d12" class="day-btn" href="Feb12_HugDay.html">Feb 12 — Hug Day 🤗</a>
+  <a id="d13" class="day-btn" href="Feb13_KissDay.html">Feb 13 — Kiss Day 💋</a>
+  <a id="d14" class="day-btn" href="#" onclick="showSurprise()">Feb 14 — Valentine's Day ❤️</a>
+</section>
+
+<section id="surprise">
+  I LOVE YOU SO MUCH BUGU ❤️<br><br>
+  Forever Yours,<br>Pugu
+</section>
+
+<script>
+function enterSite() {
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('main').style.display = 'block';
+  unlockDays();
+}
+
+// AUTO MIDNIGHT UNLOCK
+function unlockDays() {
+  const now = new Date();
+  const year = now.getFullYear();
+
+  const unlockTimes = {
+    d7:  new Date(`${year}-02-07T00:00:00`).getTime(),
+    d8:  new Date(`${year}-02-08T00:00:00`).getTime(),
+    d9:  new Date(`${year}-02-09T00:00:00`).getTime(),
+    d10: new Date(`${year}-02-10T00:00:00`).getTime(),
+    d11: new Date(`${year}-02-11T00:00:00`).getTime(),
+    d12: new Date(`${year}-02-12T00:00:00`).getTime(),
+    d13: new Date(`${year}-02-13T00:00:00`).getTime(),
+    d14: new Date(`${year}-02-14T00:00:00`).getTime()
+  };
+
+  const nowTime = now.getTime();
+
+  for (let id in unlockTimes) {
+    if (nowTime >= unlockTimes[id]) {
+      document.getElementById(id).classList.add('active');
+    }
+  }
+}
+
+function showSurprise() {
+  document.getElementById('main').style.display = 'none';
+  document.getElementById('surprise').style.display = 'block';
+}
+</script>
 
 </body>
 </html>
