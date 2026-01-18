@@ -31,7 +31,7 @@ body {
 /* LANDING PAGE */
 #landing {
   height: 100vh;
-  background: linear-gradient(135deg, #ff8bb0, #ffcbe6);
+  background: linear-gradient(135deg,#ff8bb0,#ffcbe6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +45,14 @@ body {
   font-size: 48px;
   font-weight: 700;
   animation: slideUp 1.4s;
+}
+
+.unique-msg {
+  margin-top: 12px;
+  font-size: 20px;
+  color: white;
+  text-shadow: 0 0 12px #fff;
+  animation: fadeIn 2.5s;
 }
 
 .enter-btn {
@@ -104,6 +112,7 @@ h1 {
   transition: 0.3s;
   border: 2px solid transparent;
 }
+
 .day-btn.active {
   opacity: 1;
   pointer-events: auto;
@@ -115,7 +124,6 @@ h1 {
   box-shadow: 0 0 30px #ff4f9a;
 }
 
-/* COUNTDOWN */
 #countdown {
   margin-top: 15px;
   color: white;
@@ -139,7 +147,7 @@ h1 {
 </head>
 <body>
 
-<!-- HEART PARTICLE HOLDER -->
+<!-- HEART PARTICLES -->
 <div id="particles"></div>
 
 <!-- MUSIC -->
@@ -150,6 +158,7 @@ h1 {
 <!-- LANDING PAGE -->
 <section id="landing">
   <div class="title">Bugu ❤️ Pugu</div>
+  <div class="unique-msg">Every heartbeat, every moment… leads me closer to you.</div>
   <button class="enter-btn" onclick="enterSite()">Enter</button>
   <div id="countdown"></div>
 </section>
@@ -159,6 +168,7 @@ h1 {
   <h2 style="color:white;text-shadow:0 0 10px #fff; margin-bottom:20px;">Daily Unlock Countdown</h2>
   <h1>Valentine’s Week Letters</h1>
 
+  <!-- Progress Bar -->
   <div id="progressContainer" style="width:90%;max-width:500px;background:rgba(255,255,255,0.2);height:18px;border-radius:14px;margin:20px auto;overflow:hidden;">
     <div id="progressBar" style="width:0%;height:100%;background:#ff2d6f;box-shadow:0 0 14px #ff4f9a;"></div>
   </div>
@@ -170,7 +180,7 @@ h1 {
   <div><a id="d11" class="day-btn" href="Feb11_PromiseDay.html">Feb 11 — Promise Day 🤝</a><div id="cd11"></div></div>
   <div><a id="d12" class="day-btn" href="Feb12_HugDay.html">Feb 12 — Hug Day 🤗</a><div id="cd12"></div></div>
   <div><a id="d13" class="day-btn" href="Feb13_KissDay.html">Feb 13 — Kiss Day 💋</a><div id="cd13"></div></div>
-  <div><a id="d14" class="day-btn" href="#" onclick="showSurprise()">Feb 14 — Valentine’s Day ❤️</a><div id="cd14"></div></div>
+  <div><a id="d14" class="day-btn" href="#" onclick="showSurprise()">Feb 14 — Valentine's Day ❤️</a><div id="cd14"></div></div>
 </section>
 
 <!-- SURPRISE PAGE -->
@@ -184,13 +194,13 @@ h1 {
 /* HEART PARTICLES */
 function createHearts() {
   for (let i = 0; i < 25; i++) {
-    let heart = document.createElement("div");
-    heart.classList.add("heartParticle");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-    heart.style.fontSize = (18 + Math.random() * 10) + "px";
-    document.body.appendChild(heart);
+    let h = document.createElement("div");
+    h.classList.add("heartParticle");
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = (3 + Math.random() * 5) + "s";
+    h.style.fontSize = (18 + Math.random() * 10) + "px";
+    document.body.appendChild(h);
   }
 }
 createHearts();
@@ -202,12 +212,12 @@ function enterSite() {
   unlockDays();
 }
 
-/* AUTO-UNLOCK AT MIDNIGHT */
+/* AUTO UNLOCK AT MIDNIGHT */
 function unlockDays() {
   const now = new Date();
   const y = now.getFullYear();
 
-  const unlockTimes = {
+  const unlock = {
     d7:  new Date(`${y}-02-07T00:00:00`).getTime(),
     d8:  new Date(`${y}-02-08T00:00:00`).getTime(),
     d9:  new Date(`${y}-02-09T00:00:00`).getTime(),
@@ -219,10 +229,9 @@ function unlockDays() {
   };
 
   const current = now.getTime();
-
-  for (let id in unlockTimes) {
-    if (current >= unlockTimes[id]) {
-      document.getElementById(id).classList.add('active');
+  for (let id in unlock) {
+    if (current >= unlock[id]) {
+      document.getElementById(id).classList.add("active");
     }
   }
 }
@@ -243,8 +252,7 @@ function countdown() {
   const m = Math.floor((diff%(1000*60*60))/(1000*60));
   const s = Math.floor((diff%(1000*60))/1000);
 
-  document.getElementById('countdown').innerHTML =
-    `Unlocks in: ${d}d ${h}h ${m}m ${s}s`;
+  document.getElementById('countdown').innerHTML = `Unlocks in: ${d}d ${h}h ${m}m ${s}s`;
 }
 setInterval(countdown, 1000);
 
@@ -254,7 +262,7 @@ function showSurprise() {
   document.getElementById('surprise').style.display = 'block';
 }
 
-/* DAILY COUNTDOWN UNDER EACH BUTTON */
+/* DAILY COUNTDOWN */
 function dailyCountdown() {
   const y = new Date().getFullYear();
   const targets = {
@@ -271,10 +279,10 @@ function dailyCountdown() {
   setInterval(() => {
     const now = Date.now();
     for (let id in targets) {
-      const diff = targets[id] - now;
       const box = document.getElementById(id);
-
       if (!box) continue;
+
+      const diff = targets[id] - now;
       if (diff <= 0) { box.innerHTML = "Unlocked!"; continue; }
 
       const d = Math.floor(diff/(1000*60*60*24));
@@ -289,6 +297,5 @@ function dailyCountdown() {
 dailyCountdown();
 
 </script>
-
 </body>
 </html>
