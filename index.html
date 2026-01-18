@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bugu ❤ Pugu | Valentine's Week</title>
 <style>
 body {
@@ -11,130 +10,97 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #000;
   overflow-x: hidden;
-}
+}/* HEART PARTICLES */ .heartParticle { position: fixed; top: -10px; font-size: 20px; color: #ff7eb3; animation: fall linear infinite; opacity: 0.8; } @keyframes fall { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(120vh) rotate(360deg); } }
 
-/* LANDING */
-#landing {
-  height: 100vh;
-  background: linear-gradient(135deg,#ff8bb0,#ffcbe6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
-  text-shadow: 0 0 12px #ff7eb3;
-  animation: fadeIn 2s;
-}
+/* LANDING */ #landing { height: 100vh; background: linear-gradient(135deg,#ff8bb0,#ffcbe6); display: flex; justify-content: center; align-items: center; flex-direction: column; color: white; text-shadow: 0 0 15px #ff7eb3; animation: fadeIn 2s; }
 
-@keyframes fadeIn {
-  from {opacity:0;} to {opacity:1;}
-}
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
 
-.title {
-  font-size: 48px;
-  font-weight: 700;
-  animation: slideUp 1.4s;
-}
+.title { font-size: 48px; font-weight: 700; animation: slideUp 1.4s; }
 
-@keyframes slideUp {
-  0% {opacity:0; transform:translateY(30px);}
-  100% {opacity:1; transform:translateY(0);}
-}
+@keyframes slideUp { 0% {opacity:0; transform:translateY(30px);} 100% {opacity:1; transform:translateY(0);} }
 
-.enter-btn {
-  margin-top: 18px;
-  padding: 12px 28px;
-  background: #ffb4d2;
-  border: none;
-  border-radius: 14px;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 12px #ff9ac2;
-}
+.enter-btn { margin-top: 18px; padding: 14px 32px; background: #ffb4d2; border: none; border-radius: 14px; font-size: 22px; cursor: pointer; box-shadow: 0 0 18px #ff9ac2; color: #000; font-weight: 600; transition: 0.3s; } .enter-btn:hover { transform: scale(1.08); box-shadow: 0 0 24px #ff7eb3; }
 
-/* MAIN */
-#main {
-  display: none;
-  text-align: center;
-  padding: 40px;
-  background: linear-gradient(135deg,#ff85a2,#ffcbe0);
-  min-height: 100vh;
-}
+/* MAIN */ #main { display: none; text-align: center; padding: 40px; background: linear-gradient(135deg,#ff85a2,#ffcbe0); min-height: 100vh; }
 
-h1 {
-  font-size: 42px;
-  color: #fff;
-  text-shadow: 0 0 10px #fff;
-}
+h1 { font-size: 42px; color: #fff; text-shadow: 0 0 12px #fff; }
 
-.day-btn {
-  margin: 12px auto;
-  padding: 15px;
-  width: 90%;
-  max-width: 450px;
-  background: white;
-  border-radius: 14px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #d12c6a;
-  box-shadow: 0 0 10px #fff;
-  text-decoration: none;
-  display: block;
-  opacity: 0.5;
-  pointer-events: none;
-}
+.day-btn { margin: 12px auto; padding: 15px; width: 90%; max-width: 450px; background: white; border-radius: 14px; font-size: 20px; font-weight: 600; color: #d12c6a; box-shadow: 0 0 14px #fff; text-decoration: none; display: block; opacity: 0.5; pointer-events: none; transition: 0.3s; border: 2px solid transparent; }
 
-.day-btn.active {
-  opacity: 1;
-  pointer-events: auto;
-}
+.day-btn.active { opacity: 1; pointer-events: auto; border: 2px solid #ff2d6f; box-shadow: 0 0 18px #ff3b82; } .day-btn.active:hover { transform: scale(1.05); box-shadow: 0 0 30px #ff4f9a; }
 
-/* SURPRISE */
-#surprise {
-  display: none;
-  height: 100vh;
-  background: black;
-  color: hotpink;
-  font-size: 42px;
-  text-align: center;
-  padding-top: 130px;
-  animation: fadeIn 2s;
-}
-</style>
+/* COUNTDOWN */ #countdown { margin-top: 15px; color: white; font-size: 18px; text-shadow: 0 0 10px #fff; }
+
+/* SURPRISE */ #surprise { display: none; height: 100vh; background: black; color: hotpink; font-size: 42px; text-align: center; padding-top: 130px; animation: fadeIn 2s; } </style>
+
 </head>
-<body>
-
-<section id="landing">
+<body><!-- HEART PARTICLES GENERATED WITH JS --><div id="particles"></div><!-- MUSIC --><audio id="bgMusic" autoplay loop>
+  <source src="https://files.catbox.moe/6i4z7p.mp3" type="audio/mpeg" />
+</audio><!-- LANDING --><section id="landing">
   <div class="title">Bugu ❤️ Pugu</div>
   <button class="enter-btn" onclick="enterSite()">Enter</button>
-</section>
-
-<section id="main">
-  <h1>Valentine’s Week Letters</h1>
-
-  <a id="d7" class="day-btn" href="RoseDay.html">Feb 7 — Rose Day 🌹</a>
-  <a id="d8" class="day-btn" href="Feb8_ProposeDay.html">Feb 8 — Propose Day 💍</a>
-  <a id="d9" class="day-btn" href="Feb9_ChocolateDay.html">Feb 9 — Chocolate Day 🍫</a>
-  <a id="d10" class="day-btn" href="Feb10_TeddyDay.html">Feb 10 — Teddy Day 🧸</a>
-  <a id="d11" class="day-btn" href="Feb11_PromiseDay.html">Feb 11 — Promise Day 🤝</a>
-  <a id="d12" class="day-btn" href="Feb12_HugDay.html">Feb 12 — Hug Day 🤗</a>
-  <a id="d13" class="day-btn" href="Feb13_KissDay.html">Feb 13 — Kiss Day 💋</a>
-  <a id="d14" class="day-btn" href="#" onclick="showSurprise()">Feb 14 — Valentine's Day ❤️</a>
-</section>
-
-<section id="surprise">
+  <div id="countdown"></div>
+</section><!-- MAIN --><section id="main">
+  <h2 style="color:white;text-shadow:0 0 10px #fff; margin-bottom:20px;">Daily Unlock Countdown</h2>
+  <h1>Valentine’s Week Letters</h1>  <div>
+    <a id="d7" class="day-btn" href="RoseDay.html">Feb 7 — Rose Day 🌹</a>
+    <div id="cd7" style="color:white; font-size:16px; margin-bottom:10px;"></div>
+  </div>
+  <div>
+    <a id="d8" class="day-btn" href="Feb8_ProposeDay.html">Feb 8 — Propose Day 💍</a>
+    <div id="cd8" style="color:white; font-size:16px; margin-bottom:10px;"></div>
+  </div>
+  <div>
+    <a id="d9" class="day-btn" href="Feb9_ChocolateDay.html">Feb 9 — Chocolate Day 🍫</a>
+    <div id="cd9" style="color:white; font-size:16px; margin-bottom:10px;"></div>
+  </div>
+  <div>
+    <a id="d10" class="day-btn" href="Feb10_TeddyDay.html">Feb 10 — Teddy Day 🧸</a>
+    <div id="cd10" style="color:white; font-size:16px; margin-bottom:10px;"></div>
+  </div>
+  <div>
+    <a id="d11" class="day-btn" href="Feb11_PromiseDay.html">Feb 11 — Promise Day 🤝</a>
+    <div id="cd11" style="color:white; font-size:16px; margin-bottom:10px;"></div>
+  </div>
+  <div>
+    <a id="d12" class="day-btn" href="Feb12_HugDay.html">Feb 12 — Hug Day 🤗</a>
+    <div id="cd12" style="color:white; font-size:16px; margin-bottom:10px;"></div>
+  </div>
+  <div>
+    <a id="d13" class="day-btn" href="Feb13_KissDay.html">Feb 13 — Kiss Day 💋</a>
+    <div id="cd13" style="color:white; font-size:16px; margin-bottom:10px;"></div>
+  </div>
+  <div>
+    <a id="d14" class="day-btn" href="#" onclick="showSurprise()">Feb 14 — Valentine's Day ❤️</a>
+    <div id="cd14" style="color:white; font-size:16px; margin-bottom:10px;"></div>
+  </div>
+</section><!-- SURPRISE PAGE --><section id="surprise">
   I LOVE YOU SO MUCH BUGU ❤️<br><br>
   Forever Yours,<br>Pugu
-</section>
+</section><script>
+/* HEART PARTICLES */
+function createHearts() {
+  for (let i = 0; i < 25; i++) {
+    let heart = document.createElement("div");
+    heart.classList.add("heartParticle");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+    heart.style.fontSize = (18 + Math.random() * 10) + "px";
+    document.body.appendChild(heart);
+  }
+}
+createHearts();
 
-<script>
+/* ENTER SITE */
 function enterSite() {
   document.getElementById('landing').style.display = 'none';
   document.getElementById('main').style.display = 'block';
   unlockDays();
 }
 
-// AUTO MIDNIGHT UNLOCK
+/* AUTO-UNLOCK MIDNIGHT */
 function unlockDays() {
   const now = new Date();
   const year = now.getFullYear();
@@ -151,7 +117,6 @@ function unlockDays() {
   };
 
   const nowTime = now.getTime();
-
   for (let id in unlockTimes) {
     if (nowTime >= unlockTimes[id]) {
       document.getElementById(id).classList.add('active');
@@ -159,11 +124,71 @@ function unlockDays() {
   }
 }
 
+/* COUNTDOWN */
+function countdown() {
+  const target = new Date(new Date().getFullYear() + "-02-07T00:00:00").getTime();
+  const now = Date.now();
+  let diff = target - now;
+
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML = "Unlocked!";
+    return;
+  }
+
+  let d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let h = Math.floor(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+  let m = Math.floor(diff % (1000 * 60 * 60) / (1000 * 60));
+  let s = Math.floor(diff % (1000 * 60) / 1000);
+
+  document.getElementById('countdown').innerHTML =
+    `Unlocks in: ${d}d ${h}h ${m}m ${s}s`;
+}
+setInterval(countdown, 1000);
+
+/* SURPRISE */
 function showSurprise() {
   document.getElementById('main').style.display = 'none';
   document.getElementById('surprise').style.display = 'block';
 }
-</script>
 
-</body>
+
+// DAILY COUNTDOWN FOR EACH BUTTON
+function startDailyCountdown() {
+  const year = new Date().getFullYear();
+  const targets = {
+    cd7:  new Date(`${year}-02-07T00:00:00`).getTime(),
+    cd8:  new Date(`${year}-02-08T00:00:00`).getTime(),
+    cd9:  new Date(`${year}-02-09T00:00:00`).getTime(),
+    cd10: new Date(`${year}-02-10T00:00:00`).getTime(),
+    cd11: new Date(`${year}-02-11T00:00:00`).getTime(),
+    cd12: new Date(`${year}-02-12T00:00:00`).getTime(),
+    cd13: new Date(`${year}-02-13T00:00:00`).getTime(),
+    cd14: new Date(`${year}-02-14T00:00:00`).getTime(),
+  };
+
+  setInterval(() => {
+    const now = Date.now();
+    for (let id in targets) {
+      let diff = targets[id] - now;
+      const box = document.getElementById(id);
+      if (!box) continue;
+
+      if (diff <= 0) {
+        box.innerHTML = "Unlocked!";
+        continue;
+      }
+
+      let d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      let h = Math.floor(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+      let m = Math.floor(diff % (1000 * 60 * 60) / (1000 * 60));
+      let s = Math.floor(diff % (1000 * 60) / 1000);
+
+      box.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+    }
+  }, 1000);
+}
+
+startDailyCountdown();
+
+</script></body>
 </html>
