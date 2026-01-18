@@ -46,7 +46,7 @@ h1 { font-size: 42px; color: #fff; text-shadow: 0 0 12px #fff; }
   <h1>Valentine’s Week Letters</h1><!-- Progress Bar --><div id="progressContainer" style="width:90%;max-width:500px;background:rgba(255,255,255,0.2);height:18px;border-radius:14px;margin:20px auto;overflow:hidden;backdrop-filter:blur(6px);">
   <div id="progressBar" style="width:0%;height:100%;background:#ff2d6f;box-shadow:0 0 14px #ff4f9a;transition:width 1s;"></div>
 </div>  <div>
-    <a id="d7" class="day-btn" href="Feb7_RoseDay.html">Feb 7 — Rose Day 🌹</a>
+    <a id="d7" class="day-btn" href="RoseDay.html">Feb 7 — Rose Day 🌹</a>
     <div id="cd7" style="color:white; font-size:16px; margin-bottom:10px;"></div>
   </div>
   <div>
@@ -178,52 +178,6 @@ function updateProgressBar() {
 }
 setInterval(updateProgressBar, 2000);
 
-function startDailyCountdown() {
-  const year = new Date().getFullYear();
-  const targets = {
-    cd7:  new Date(`${year}-02-07T00:00:00`).getTime(),
-    cd8:  new Date(`${year}-02-08T00:00:00`).getTime(),
-    cd9:  new Date(`${year}-02-09T00:00:00`).getTime(),
-    cd10: new Date(`${year}-02-10T00:00:00`).getTime(),
-    cd11: new Date(`${year}-02-11T00:00:00`).getTime(),
-    cd12: new Date(`${year}-02-12T00:00:00`).getTime(),
-    cd13: new Date(`${year}-02-13T00:00:00`).getTime(),
-    cd14: new Date(`${year}-02-14T00:00:00`).getTime(),
-  };
-
-  setInterval(() => {
-    const now = Date.now();
-    for (let id in targets) {
-      let diff = targets[id] - now;
-      const box = document.getElementById(id);
-      if (!box) continue;
-
-      if (diff <= 0) {
-        box.innerHTML = "Unlocked!";
-        continue;
-      }
-
-      let d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      let h = Math.floor(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-      let m = Math.floor(diff % (1000 * 60 * 60) / (1000 * 60));
-      let s = Math.floor(diff % (1000 * 60) / 1000);
-
-      box.innerHTML = `${d}d ${h}h ${m}m ${s}s`;
-    }
-  }, 1000);
-}
-
-startDailyCountdown();
-
-</script></body>
-</html>/* SURPRISE */
-function showSurprise() {
-  document.getElementById('main').style.display = 'none';
-  document.getElementById('surprise').style.display = 'block';
-}
-
-
-// DAILY COUNTDOWN FOR EACH BUTTON
 function startDailyCountdown() {
   const year = new Date().getFullYear();
   const targets = {
