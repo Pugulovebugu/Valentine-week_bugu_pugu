@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <title>Happy Valentine’s Day ❤️</title>
@@ -11,7 +10,7 @@ body {
   text-align: center;
   padding: 40px;
   overflow-x: hidden;
-  animation: fadeIn 2s ease-in-out;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 /* Fade-in text animation */
@@ -20,6 +19,11 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* Page visibility */
+.page { display: none; }
+.show { display: block; }
+
+/* Main heading */
 h1 {
   color: #ff1e6e;
   font-size: 44px;
@@ -57,7 +61,6 @@ p {
   0% { transform: translateY(0) scale(1); opacity: 1; }
   100% { transform: translateY(-160px) scale(1.6); opacity: 0; }
 }
-
 .heart {
   position: absolute;
   bottom: -20px;
@@ -67,77 +70,124 @@ p {
   animation: floatUp 4s infinite ease-in-out;
   filter: drop-shadow(0 0 8px #ff1e6e);
 }
+.heart:nth-child(2) { left: 20%; animation-duration: 5s; animation-delay: 1s; }
+.heart:nth-child(3) { left: 70%; animation-duration: 6s; animation-delay: 0.5s; }
 
-.heart:nth-child(2) {
-  left: 20%;
-  animation-duration: 5s;
-  animation-delay: 1s;
-}
-
-.heart:nth-child(3) {
-  left: 70%;
-  animation-duration: 6s;
-  animation-delay: 0.5s;
-}
-
-/* Sparkles */
-.sparkle {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #fff;
-  border-radius: 50%;
-  animation: sparkleAnim 2s infinite ease-in-out;
-  filter: drop-shadow(0 0 10px #fff);
-}
-@keyframes sparkleAnim {
-  0% { opacity: 0; transform: scale(0.3); }
-  50% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.3); }
-}
-
-.sparkle:nth-child(4) { top: 10%; left: 15%; animation-delay: 0.3s; }
-.sparkle:nth-child(5) { top: 35%; left: 80%; animation-delay: 0.8s; }
-.sparkle:nth-child(6) { top: 70%; left: 30%; animation-delay: 1.3s; }
-.sparkle:nth-child(7) { top: 50%; left: 60%; animation-delay: 1.8s; }
-
-.name {
-  margin-top: 25px;
+/* Buttons */
+.btn {
+  padding: 14px 30px;
+  margin: 20px;
   font-size: 22px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: #ff1e6e;
+  color: white;
+  box-shadow: 0 0 12px #ff1e6e;
+  transition: 0.3s ease-in-out;
+}
+.btn:hover { transform: scale(1.1); }
+
+/* NO button runaway */
+#noBtn {
+  position: relative;
+}
+
+/* Celebration message */
+@keyframes pop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.love-msg {
+  font-size: 34px;
   color: #ff1e6e;
   font-weight: 600;
-  opacity: 0;
-  animation: fadeText 1.4s forwards 1.6s;
-  text-shadow: 0 0 10px #ff1e6e;
+  text-shadow: 0 0 12px #ff1e6e;
+  animation: pop 1.6s ease-in-out forwards;
 }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+/* Confetti */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  background: #ff1e6e;
+  animation: fall 3s linear infinite;
+  border-radius: 50%;
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Floating glow hearts -->
+<!-- Floating hearts -->
 <div class="heart">❤️</div>
 <div class="heart">❤️</div>
 <div class="heart">❤️</div>
 
-<!-- Sparkles -->
-<div class="sparkle"></div>
-<div class="sparkle"></div>
-<div class="sparkle"></div>
-<div class="sparkle"></div>
+<!-- PAGE 1 -->
+<div id="page1" class="page show">
+  <div class="icon">❤️</div>
+  <h1>Happy Valentine’s Day, Bugu ❤️</h1>
+  <p>Bugu, today belongs to lovers… but ours is special—strong enough to survive the miles. You’re my forever Valentine. One day, we’ll celebrate this day side by side.</p>
+  <div class="name">– With all my love, Pugu</div>
 
-<div class="icon">❤️</div>
+  <button class="btn" onclick="nextPage()">Next ➜</button>
+</div>
 
-<h1>Happy Valentine’s Day, Bugu ❤️</h1>
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+  <h1 style="font-size:40px;">Bugu… Will you be my Valentine? ❤️</h1>
 
-<p>Bugu, today belongs to lovers… but ours is special—strong enough to survive the miles. You’re my forever Valentine. One day, we’ll celebrate this day side by side.</p>
+  <button class="btn" onclick="yesAnswer()">YES 💗</button>
+  <button class="btn" id="noBtn" onmouseover="runAway()">NO 😭</button>
+</div>
 
-<div class="name">– With all my love, Pugu</div>
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+  <h1 class="love-msg">
+    Yesss my Valentine! You said yes and now my heart is doing a happy dance because of you.  
+    You make everything extra cute in my world.  
+    I love you 💖.
+  </h1>
+</div>
+
+<script>
+function nextPage() {
+  document.getElementById("page1").classList.remove("show");
+  document.getElementById("page2").classList.add("show");
+}
+
+function runAway() {
+  let btn = document.getElementById("noBtn");
+  let x = Math.random() * 200 - 100;
+  let y = Math.random() * 200 - 100;
+  btn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function yesAnswer() {
+  document.getElementById("page2").classList.remove("show");
+  document.getElementById("page3").classList.add("show");
+
+  for (let i = 0; i < 50; i++) {
+    let c = document.createElement("div");
+    c.classList.add("confetti");
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = ["#ff1e6e", "#ff77a9", "#ffb3d1"][Math.floor(Math.random()*3)];
+    c.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    document.body.appendChild(c);
+
+    setTimeout(() => c.remove(), 3000);
+  }
+}
+</script>
 
 </body>
 </html>
